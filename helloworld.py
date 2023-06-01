@@ -9,14 +9,20 @@ def hello_world():
     return 'Hello, World!'
 
 @app.route('/api/trigger', methods=['POST'])
+
 def handle_trigger():
+    secret = request.headers.get('Authorization')
+    
+    if secret is None:
+        return 'Unauthorized', 401
+    
     data = request.get_json()
     # Extract key-value pairs from the data dictionary
     for key, value in data.items():
         print(f"Key: {key}, Value: {value}")
         # Perform further processing as needed
     
-    response = {'data': data}
+    response = {'data': data, 'secret': secret}
     return jsonify(response)
 
 if __name__ == '__main__':
