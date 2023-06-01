@@ -1,7 +1,7 @@
 #requirements
 Flask
 requests
-hubspot
+hubspot==8.0.0-beta.6
 string
 time
 re
