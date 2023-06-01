@@ -11,7 +11,11 @@ def hello_world():
 @app.route('/api/trigger', methods=['POST'])
 def handle_trigger():
     data = request.get_json()
-    # Process the data and perform necessary actions
+    # Extract key-value pairs from the data dictionary
+    for key, value in data.items():
+        print(f"Key: {key}, Value: {value}")
+        # Perform further processing as needed
+    
     response = {'message': 'Trigger received', 'data': data}
     return jsonify(response)
 
