@@ -1,7 +1,7 @@
 #requirements
 Flask
 requests
-hubspot-api-client==7.5.0
+hubspot==7.5.0
 string
 time
 re
