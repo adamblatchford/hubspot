@@ -16,7 +16,7 @@ def handle_trigger():
         print(f"Key: {key}, Value: {value}")
         # Perform further processing as needed
     
-    response = {'message': 'Trigger received', 'data': data}
+    response = {'data': data}
     return jsonify(response)
 
 if __name__ == '__main__':
