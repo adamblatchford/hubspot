@@ -1,3 +1,7 @@
 #requirements
 Flask
 requests
+hubspot
+string
+time
+re
