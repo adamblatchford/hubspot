@@ -23,6 +23,7 @@ def handle_trigger():
 	synopsis =''
 	target_description = ''
 	recordID = ''
+	maxRecords = 1
 	
 	if secret is None:
 		return 'Unauthorized', 401
@@ -46,6 +47,9 @@ def handle_trigger():
 		
 		if key == 'openAIkey':
 			openai_api_key = value
+			
+		if key == 'maxRecords':
+			maxRecords = value
 	
 	client = hubspot.Client.create(access_token=secret)
 	filter = { 'propertyName': 'lifecyclestage', 'operator': 'EQ', 'value': 'salesqualifiedlead'}
@@ -53,7 +57,7 @@ def handle_trigger():
 	sort = ''
 	query = ''
 	properties = ['hs_object_id', 'description','specialities__linkedin_', 'linkedin_description','level_2_taxonomy','level_3_taxonomy','web_home_page___ai_scrape','domain']
-	limit = 1
+	limit = int(maxRecords)
 	after = 0
 	
 	publicObjectSearchRequest = {
