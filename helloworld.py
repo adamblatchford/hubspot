@@ -72,6 +72,7 @@ def handle_trigger():
 		
 	except ApiException as e:
 		print("Exception when calling basic_api->get_page: %s\n" % e)
+		return 'HubSpot API failure',401
 	
 	i = 0
 	
