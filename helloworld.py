@@ -53,7 +53,7 @@ def handle_trigger():
 	sort = ''
 	query = ''
 	properties = ['description','specialities__linkedin_', 'linkedin_description','level_2_taxonomy','level_3_taxonomy','web_home_page___ai_scrape','domain']
-	limit = 1
+	limit = 50
 	after = 0
 	
 	publicObjectSearchRequest = {
