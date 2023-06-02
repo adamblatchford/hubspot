@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, jsonify
 import json
 from openAI_chatfunctions import chat
+import hubspot
 
 app = Flask(__name__)
 
