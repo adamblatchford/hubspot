@@ -133,7 +133,7 @@ def handle_trigger():
 		}
 		results.append(thisresult)
 
-	response = {'counter ':i, 'results ': results}
+	response = {'key': openai_api_key, 'counter ':i, 'results ': results}
 	return jsonify(response)
 
 if __name__ == '__main__':
