@@ -52,7 +52,7 @@ def handle_trigger():
 	filterGroup = { 'filters': [filter] }
 	sort = ''
 	query = ''
-	properties = ['description','specialities__linkedin_', 'linkedin_description','level_2_taxonomy','level_3_taxonomy','web_home_page___ai_scrape','domain']
+	properties = ['hs_object_id', 'description','specialities__linkedin_', 'linkedin_description','level_2_taxonomy','level_3_taxonomy','web_home_page___ai_scrape','domain']
 	limit = 1
 	after = 0
 	
@@ -75,10 +75,15 @@ def handle_trigger():
 		return 'HubSpot API failure: ' + secret,401
 	
 	i = 0
+	results = []
 	
 	for thiscompany in api_response.results:
 		
 		i = i + 1
+		
+		companyID = thiscompany.properties['hs_object_id']
+		if companyID is None:
+			companyID =''
 		
 		domain = thiscompany.properties['domain']
 		if domain is None:
@@ -115,8 +120,16 @@ def handle_trigger():
 		temp = response_AI
 		completions = [c.strip() for c in temp.split('\n') if c.strip() != '']
 		fit = (completions[0])
+		
+		thisresult = {
+			'companyID': companyID,
+			'insightID': recordID,
+			'fit': fit,
+			'rationale': 'Nothing yet'
+		}
+		results.append(thisresult)
 
-	response = {'counter ':i, 'fit ': fit}
+	response = {'counter ':i, 'results ': results}
 	return jsonify(response)
 
 if __name__ == '__main__':
