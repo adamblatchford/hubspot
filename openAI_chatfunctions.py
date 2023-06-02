@@ -28,14 +28,9 @@ def chat(system, user_assistant, openai_api_key):
     	'messages': msgs
 	}
   
-  
-  try:
-    response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
-  
-  except:
-    assert 1==1, 'Fucked'
+  response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
     
-  print(response)
+  #print(response)
   responseJson = response.json()
   status_code = responseJson["choices"][0]["finish_reason"]
   #assert status_code == "stop", f"The status code was {status_code}."
