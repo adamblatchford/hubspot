@@ -1,3 +1,4 @@
+import requests
 def chat(system, user_assistant, openai_api_key):
   
   #assert counter==0, counter
