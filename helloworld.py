@@ -53,7 +53,7 @@ def handle_trigger():
 	sort = ''
 	query = ''
 	properties = ['description','specialities__linkedin_', 'linkedin_description','level_2_taxonomy','level_3_taxonomy','web_home_page___ai_scrape','domain']
-	limit = 50
+	limit = 1
 	after = 0
 	
 	publicObjectSearchRequest = {
@@ -107,8 +107,16 @@ def handle_trigger():
 		webscrape = thiscompany.properties['web_home_page___ai_scrape']
 		if webscrape is None:
 			webscrape = ''
+			
+		openAIprompt = 'Here is some text about a transaction: '+ synopsis +'[End of text about a transaction]. This is a description of the company acquired:' + target_description+ '[End of text about the company acquired]. Please give a score on a scale of 0-10 of how relevant the transaction is to the following company, and explain why. Consider services, technologies, strategic fit, synergies, and geography. You can use the following 6 company data sources. (1) description: '+description + ' ; (2) service specialities: ' + linkedin_specialities + ' ; (3) LinkedIn bio:' + linkedin_description  + ' ; (4) summary of services:' + level2  +' ; (5) technology partnerships:' + level3  +' ; (6) words from their website homepage: ' +webscrape
+		systemMessage = 'You are an investment banking analyst. You have expertise in matching the fit precedent M&A transactions and companies you know (targets). You consider the following factors: (1) service lines. (2) expertise in specific technologies. (3) the fit to the stated strategy of the buyer (4) potential synergies (5) complementarity of the geographical footprint. '
 
-	response = {'counter': i, 'synopsis': synopsis, 'target_description': target_description, 'hs_object_id':  recordID, 'openAIkey': openai_api_key, 'secret': secret}
+		response_AI = chat(systemMessage, [openAIprompt], openai_api_key, i)
+		temp = response_AI
+		completions = [c.strip() for c in temp.split('\n') if c.strip() != '']
+		fit = (completions[0])
+
+	response = {'counter ':i, 'fit ': fit, 'synopsis': synopsis, 'target_description': target_description, 'hs_object_id':  recordID, 'openAIkey': openai_api_key, 'secret': secret}
 	return jsonify(response)
 
 if __name__ == '__main__':
