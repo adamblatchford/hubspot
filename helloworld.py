@@ -65,6 +65,8 @@ def handle_trigger():
 		'after': after
 	};
 	
+	api_response = None
+	
 	try:
 		api_response = client.crm.companies.search_api.do_search(publicObjectSearchRequest)
 		
