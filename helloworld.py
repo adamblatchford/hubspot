@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify
 import json
 from openAI_chatfunctions import chat
 import hubspot
+from hubspot import HubSpot
+from hubspot.crm.contacts import ApiException  
+from hubspot.crm.companies import ApiException
 
 app = Flask(__name__)
 
