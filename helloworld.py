@@ -88,7 +88,7 @@ def handle_trigger():
 		if key == 'openAIkey':
 			openai_api_key = value
 		
-	response = {'synopsis': synopsis, 'target_description': target_description, 'hs_object_id':  hs_object_id, 'openAIkey': openai_api_key, 'secret': secret}
+	response = {'synopsis': synopsis, 'target_description': target_description, 'hs_object_id':  recordID, 'openAIkey': openai_api_key, 'secret': secret}
 	return jsonify(response)
 
 if __name__ == '__main__':
