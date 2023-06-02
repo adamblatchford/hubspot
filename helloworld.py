@@ -44,7 +44,7 @@ def handle_trigger():
 		if key == 'openAIkey':
 			openai_api_key = value
 	
-	client = hubspot.Client.create(access_token=hubspot_app_token)
+	client = hubspot.Client.create(access_token=secret)
 	filter = { 'propertyName': 'lifecyclestage', 'operator': 'EQ', 'value': 'salesqualifiedlead'}
 	filterGroup = { 'filters': [filter] }
 	sort = ''
