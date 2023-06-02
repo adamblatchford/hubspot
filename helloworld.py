@@ -64,8 +64,8 @@ def handle_trigger():
 	try:
 		api_response = client.crm.companies.search_api.do_search(publicObjectSearchRequest)
 		
-		except ApiException as e:
-			print("Exception when calling basic_api->get_page: %s\n" % e)
+	except ApiException as e:
+		print("Exception when calling basic_api->get_page: %s\n" % e)
 	
 	i = 0
 	
