@@ -140,8 +140,8 @@ for companyloop in rows:
     AI_response = requests.post(openAI_URL, headers=openAI_headers, json=openAI_payload)
     AI_data = AI_response.json()
 
-    #score = ""
-    #explanation = ""
+    score = ""
+    explanation = ""
 
     try:
         AI_content = AI_data["choices"][0]["message"]["content"]
