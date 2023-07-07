@@ -102,6 +102,8 @@ openAI_headers = {
     "Authorization": f"Bearer {openAI_bearer_token}"
 }
 
+print (openAI_headers)
+
 matches = []
 counter = 1
 
