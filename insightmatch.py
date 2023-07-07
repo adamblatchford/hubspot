@@ -96,7 +96,7 @@ for hs_object_id, companyname, description,linkedin_description,specialities__li
     rows.append(row)
 
 openAI_URL = "https://api.openai.com/v1/chat/completions"
-openAI_bearer_token = "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"
+openAI_bearer_token = "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"
 openAI_headers = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {openAI_bearer_token}"
