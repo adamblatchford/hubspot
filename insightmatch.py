@@ -14,7 +14,7 @@ bearer_token = "pat-na1-8bb90e58-788c-431b-b107-cf2c996c0ebc"
 url = "https://api.hubspot.com/crm/v3/objects/companies/search"
 headers = {
     "Content-Type": "application/json",
-    "Authorization": f"Bearer {bearer_token}"
+    "Authorization": f"{bearer_token}"
 }
 
 payload = {
